@@ -1,1 +1,31 @@
-\lipsum
+\section{Role and Responsibilities Analysis}
+As a Full Stack Android Developer Intern, the primary role was to contribute to the development of the wrkin.app mobile application. This involved both frontend and backend development tasks. Responsibilities included developing new features, fixing bugs, participating in code reviews, and collaborating with the design and product teams. The internship provided a comprehensive experience of the entire software development lifecycle, from initial concept to deployment.
+
+\section{Core HRMS Application Development}
+A significant portion of the internship was dedicated to the development of the core HRMS application. This involved implementing features such as:
+\begin{itemize}
+    \item \textbf{Leave Management:} A system for employees to request leave and for managers to approve or deny requests.
+    \item \textbf{Attendance Tracking:} A feature for employees to check in and out, with GPS verification.
+    \item \textbf{Performance Evaluation:} A module for setting goals, tracking progress, and conducting performance reviews.
+\end{itemize}
+These features were developed using Flutter for the frontend and Django for the backend, with a focus on creating a seamless and intuitive user experience.
+
+\section{Real-time Communication System}
+The real-time communication system is a core component of the wrkin.app platform. The internship involved working on the chat module, which includes features like:
+\begin{itemize}
+    \item Real-time messaging with message status indicators (sent, delivered, read).
+    \item File sharing with previews for images and documents.
+    \item Message threading and conversation management.
+\end{itemize}
+The real-time functionality was implemented using WebSockets with Django Channels on the backend and the `web_socket_channel` package in Flutter on the frontend.
+
+\section{Task Management Integration}
+A key innovation of wrkin.app is the seamless integration of task management within the chat interface. This feature allows users to create and assign tasks directly from a conversation. The internship involved developing the UI for this feature, as well as the backend API for creating, updating, and tracking tasks.
+
+\section{Technical Challenges and Solutions}
+During the internship, several technical challenges were encountered and overcome. These included:
+\begin{itemize}
+    \item \textbf{Real-time Communication Scalability:} The initial implementation of the chat feature had performance issues with a large number of concurrent users. This was solved by implementing a more efficient message queuing system with Redis and optimizing the WebSocket connection management.
+    \item \textbf{Cross-Platform Mobile Optimization:} Ensuring a consistent user experience across a wide range of Android devices was a challenge. This was addressed by developing a responsive design system and implementing adaptive image loading.
+    \item \textbf{Secure Data Management:} Handling sensitive HR data required a high level of security. This was achieved by implementing end-to-end encryption for chat messages and using biometric authentication for secure access to the application.
+\end{itemize}
