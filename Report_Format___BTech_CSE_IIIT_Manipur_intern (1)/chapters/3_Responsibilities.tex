@@ -1,32 +1,52 @@
+\chapter{Roles and Responsibilities}
+
 \section{Overall System Architecture}
-The wrkin.app platform is built on a modern, full-stack architecture. The frontend is a mobile application developed using Flutter, while the backend is a RESTful API built with Django. The database is PostgreSQL, with Redis used for caching. The system is designed to be scalable and modular, with a microservices-oriented structure to prepare for future growth.
-\newline
-[INSERT FIGURE: System Architecture Diagram]
 
-\section{Frontend Development - Flutter Framework}
-The mobile application is developed using Flutter 3.x and Dart 3.x with null safety. The BLoC (Business Logic Component) pattern is used for state management. The UI is built with custom widgets to create a unique and intuitive user experience. Key features implemented include:
-\begin{itemize}
-    \item Real-time chat with WebSocket integration.
-    \item Push notifications using Firebase Cloud Messaging.
-    \item File management for multi-format uploads and downloads.
-    \item Camera integration for document scanning.
-    \item Biometric authentication for enhanced security.
-\end{itemize}
+As a Full Stack Android Developer Intern at Wrkin.app, I was responsible for contributing to the development of a modern and scalable HRMS and work collaboration platform. The platform was architected as a full-stack system with a mobile-first design, emphasizing accessibility, speed, and user experience. At the heart of the system is a Flutter-based frontend and a Django-powered backend, both connected via secure RESTful APIs and WebSockets for real-time interaction.
 
-\section{Backend Development - Django Framework}
-The backend is developed using Django 4.x and Python 3.11+. The Django REST Framework is used to create a RESTful API. Key features of the backend include:
-\begin{itemize}
-    \item JWT-based authentication with refresh tokens.
-    \item WebSocket support for real-time features via Django Channels.
-    \item Cloud storage integration with AWS S3 for file management.
-    \item Asynchronous task processing with Celery and Redis.
-    \item Security features such as rate limiting and CORS protection.
-\end{itemize}
+The frontend serves as the user-facing layer, delivering a seamless experience to users across Android and iOS platforms. The backend handles business logic, data processing, and real-time communication. PostgreSQL is used for persistent data storage due to its robustness and support for advanced data modeling. This layered architecture ensures modularity, scalability, and ease of maintenance.
+
+The RESTful API provides structured communication between the frontend and backend components, ensuring that each service remains loosely coupled. For features like real-time chat, typing indicators, and live task updates, WebSockets were implemented, allowing persistent, bidirectional communication. The use of containerization and CI/CD pipelines further strengthened the system's deployment efficiency, making the architecture both modern and production-ready.
+
+\section{Frontend Development – Flutter Framework}
+
+My primary responsibility involved frontend development using the Flutter framework, chosen for its ability to deliver high-performance, cross-platform mobile applications from a single codebase. Using Flutter 3.x and Dart 3.x with null safety, I developed multiple modules of the application, focusing on UI responsiveness, platform consistency, and business workflow integration.
+
+The app followed the BLoC (Business Logic Component) pattern to enforce a clean separation between UI rendering and state management. This allowed for reactive programming, which proved crucial in building dynamic, real-time interfaces that responded to user inputs and backend updates seamlessly. I implemented features using custom widgets tailored for enterprise use, such as task cards, employee profile views, and project dashboards.
+
+To enhance the application's capabilities, several advanced features were integrated. These included biometric authentication (fingerprint and face unlock), document scanning using the camera, real-time messaging via WebSockets, deep linking for contextual navigation, and push notifications via Firebase Cloud Messaging. The interface was also optimized for responsiveness across smartphones and tablets, ensuring consistent performance and usability regardless of screen size.
+
+I also focused on accessibility and internationalization support, making the app usable for diverse audiences. Animations and transitions were built using Flutter's rich animation library to make user interactions more fluid. Testing was conducted using both unit and widget-level tests to ensure UI stability across builds.
+
+\section{Backend Development – Django Framework}
+
+While my role was primarily focused on the frontend, I was also involved in backend development activities using the Django web framework. The backend was built with Django 4.x and Python 3.11+, providing a strong foundation for developing secure, scalable APIs consumed by the mobile app. 
+
+The system followed RESTful API design principles, utilizing Django REST Framework (DRF) to expose clean and consistent endpoints. I contributed to building and testing several APIs related to task management, employee profiles, and notification services. JWT (JSON Web Tokens) were used for stateless authentication, providing secure and efficient token-based access control for mobile clients.
+
+Real-time functionality was supported using Django Channels, which extended Django’s synchronous capabilities with asynchronous WebSocket support. This allowed for the creation of real-time chat systems, instant updates for tasks and projects, and user presence indicators. I worked on integrating and testing these features from the frontend perspective and assisted in debugging server-side WebSocket interactions.
+
+To support background tasks, Celery was integrated with Redis as the message broker. This enabled the asynchronous execution of processes like email notifications, report generation, and scheduled reminders. Additionally, media files were stored using cloud storage services like AWS S3, with secure access policies and performance-optimized delivery.
+
+Security was a top priority, with protections in place against SQL injection, XSS, CSRF, and CORS vulnerabilities. The backend system was also prepared for scaling, with modular app design and database query optimization practices in place.
 
 \section{Database Design and Management}
-The database schema is designed using a normalized structure with performance indexes. PostgreSQL is the primary database. The design includes complex many-to-many relationships to model users, teams, projects, and conversations. Database migrations are managed using Django's built-in migration system.
-\newline
-[INSERT FIGURE: Database Schema Diagram]
+
+Wrkin.app uses PostgreSQL as its primary relational database. During the internship, I worked with database schemas and queries, primarily through backend integration and testing. The schema was designed with normalized structures to maintain data integrity and minimize redundancy. Tables were created for users, teams, tasks, messages, HR records, and project metadata, with proper indexing for query optimization.
+
+I gained experience in managing many-to-many relationships, particularly between users and tasks, as well as projects and chat rooms. These relationships were critical in managing collaborative features like shared tasks, group messaging, and team performance tracking.
+
+Django’s ORM (Object-Relational Mapping) system was used extensively to simplify query writing and enforce schema validation. I also worked with Django migrations to apply schema changes in a controlled and versioned manner. For data safety and recovery, daily backup mechanisms were configured with support for point-in-time recovery. These backups were stored securely in cloud repositories and regularly tested for reliability.
 
 \section{Development Environment and Tools}
-The development environment consists of Android Studio and Visual Studio Code for coding, Figma for UI/UX design, and Postman for API testing. Git is used for version control, with a feature branch workflow and and mandatory code reviews. The CI/CD pipeline includes automated testing to ensure code quality.
+
+The development workflow at Wrkin.app was structured, collaborative, and reflective of best industry practices. Version control was managed using Git, with a feature-branch strategy that enabled safe and parallel development. All changes were submitted as pull requests and underwent peer code reviews, which encouraged knowledge sharing and ensured high code quality.
+
+The main IDEs I used were Android Studio and Visual Studio Code for Flutter development, while PyCharm was used occasionally for Python backend contributions. Postman was an essential tool for API testing, helping verify the correctness of backend endpoints before frontend integration. Database interactions were monitored and tested using pgAdmin.
+
+Our team adopted Agile development methodologies, with bi-weekly sprint cycles and daily stand-ups. Tasks were tracked using a collaborative issue management tool, which allowed for prioritization, bug tracking, and sprint planning. For UI/UX design and component specification, Figma was used to share mockups and coordinate implementation with the design team.
+
+Testing was an integral part of the workflow. I wrote unit tests and integration tests for multiple Flutter modules, targeting at least 80\% code coverage. The continuous integration/continuous deployment (CI/CD) pipeline automatically built and tested the codebase, deploying to staging environments for review. This pipeline helped maintain development velocity while ensuring code stability and minimizing deployment risks.
+
+Overall, my responsibilities encompassed a wide spectrum of tasks—from frontend UI construction and backend API integration to testing and collaboration. This comprehensive exposure allowed me to grow as a full-stack developer and gain confidence in handling production-level projects in a professional setting.
+
