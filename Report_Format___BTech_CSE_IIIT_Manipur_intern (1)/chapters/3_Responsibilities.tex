@@ -1,52 +1,93 @@
-\chapter{Roles and Responsibilities}
+\chapter{Requirement Engineering}
 
-\section{Overall System Architecture}
+\section{Introduction to Requirement Engineering at wrkin.app}
 
-As a Full Stack Android Developer Intern at Wrkin.app, I was responsible for contributing to the development of a modern and scalable HRMS and work collaboration platform. The platform was architected as a full-stack system with a mobile-first design, emphasizing accessibility, speed, and user experience. At the heart of the system is a Flutter-based frontend and a Django-powered backend, both connected via secure RESTful APIs and WebSockets for real-time interaction.
+Requirement engineering formed a critical phase in the internship at wrkin.app, especially given the product's ambitious vision of redefining workplace collaboration through a unified HRMS, communication, and task management platform. In this high-growth startup environment, where priorities often shift rapidly, requirement engineering needed to be dynamic yet structured enough to support reliable development. This phase not only involved identifying user and system needs but also translating them into actionable specifications that could align product functionality with business objectives.
 
-The frontend serves as the user-facing layer, delivering a seamless experience to users across Android and iOS platforms. The backend handles business logic, data processing, and real-time communication. PostgreSQL is used for persistent data storage due to its robustness and support for advanced data modeling. This layered architecture ensures modularity, scalability, and ease of maintenance.
+The goal was to ensure that product development remained user-centric, responsive to stakeholder input, and adaptable to emerging technical opportunities. This chapter outlines the structured yet flexible process followed during the internship, covering requirement elicitation, documentation, analysis, validation, management, and iterative refinement.
 
-The RESTful API provides structured communication between the frontend and backend components, ensuring that each service remains loosely coupled. For features like real-time chat, typing indicators, and live task updates, WebSockets were implemented, allowing persistent, bidirectional communication. The use of containerization and CI/CD pipelines further strengthened the system's deployment efficiency, making the architecture both modern and production-ready.
+\section{Requirement Elicitation Techniques}
 
-\section{Frontend Development – Flutter Framework}
+The requirement elicitation process at wrkin.app combined both formal and informal strategies, adapted for the fast-paced, collaborative culture of the startup.
 
-My primary responsibility involved frontend development using the Flutter framework, chosen for its ability to deliver high-performance, cross-platform mobile applications from a single codebase. Using Flutter 3.x and Dart 3.x with null safety, I developed multiple modules of the application, focusing on UI responsiveness, platform consistency, and business workflow integration.
+\subsection{Stakeholder Interviews}
 
-The app followed the BLoC (Business Logic Component) pattern to enforce a clean separation between UI rendering and state management. This allowed for reactive programming, which proved crucial in building dynamic, real-time interfaces that responded to user inputs and backend updates seamlessly. I implemented features using custom widgets tailored for enterprise use, such as task cards, employee profile views, and project dashboards.
+Key stakeholders—including the CEO, product manager, and engineering leads—were interviewed during the initial onboarding phase. These interviews clarified business goals, key product differentiators, and urgent technical deliverables. Special attention was paid to aligning the requirements with the startup's go-to-market strategy, scalability needs, and mobile-first product vision.
 
-To enhance the application's capabilities, several advanced features were integrated. These included biometric authentication (fingerprint and face unlock), document scanning using the camera, real-time messaging via WebSockets, deep linking for contextual navigation, and push notifications via Firebase Cloud Messaging. The interface was also optimized for responsiveness across smartphones and tablets, ensuring consistent performance and usability regardless of screen size.
+\subsection{Observation and Workflow Analysis}
 
-I also focused on accessibility and internationalization support, making the app usable for diverse audiences. Animations and transitions were built using Flutter's rich animation library to make user interactions more fluid. Testing was conducted using both unit and widget-level tests to ensure UI stability across builds.
+Since wrkin.app was in active development, live workflows and staging environments were available for exploration. Observing the real-time interactions of existing systems enabled deeper understanding of workflow bottlenecks and integration gaps. For instance, the lack of seamless transition between communication threads and task creation was noted early and became a foundation for several user stories.
 
-\section{Backend Development – Django Framework}
+\subsection{Competitor Analysis}
 
-While my role was primarily focused on the frontend, I was also involved in backend development activities using the Django web framework. The backend was built with Django 4.x and Python 3.11+, providing a strong foundation for developing secure, scalable APIs consumed by the mobile app. 
+An in-depth analysis of competitors like Slack, Microsoft Teams, and Zoho Workplace was conducted. Their strengths, limitations, and market positioning helped shape wrkin.app's unique value proposition. This competitive analysis informed requirement prioritization and revealed whitespace opportunities such as better HR integration and simplified UI for SMBs.
 
-The system followed RESTful API design principles, utilizing Django REST Framework (DRF) to expose clean and consistent endpoints. I contributed to building and testing several APIs related to task management, employee profiles, and notification services. JWT (JSON Web Tokens) were used for stateless authentication, providing secure and efficient token-based access control for mobile clients.
+\section{Requirement Specification}
 
-Real-time functionality was supported using Django Channels, which extended Django’s synchronous capabilities with asynchronous WebSocket support. This allowed for the creation of real-time chat systems, instant updates for tasks and projects, and user presence indicators. I worked on integrating and testing these features from the frontend perspective and assisted in debugging server-side WebSocket interactions.
+\subsection{User Stories and Acceptance Criteria}
 
-To support background tasks, Celery was integrated with Redis as the message broker. This enabled the asynchronous execution of processes like email notifications, report generation, and scheduled reminders. Additionally, media files were stored using cloud storage services like AWS S3, with secure access policies and performance-optimized delivery.
+A series of user stories were developed using the agile framework. Each story was written from a user's perspective and paired with clearly defined acceptance criteria. For example, "As a team lead, I want to assign a task within a chat conversation so that I don’t need to switch to another application." Acceptance criteria included UI triggers, backend response time, and notification visibility.
 
-Security was a top priority, with protections in place against SQL injection, XSS, CSRF, and CORS vulnerabilities. The backend system was also prepared for scaling, with modular app design and database query optimization practices in place.
+\subsection{Functional Requirements Documentation}
 
-\section{Database Design and Management}
+Functional requirements were systematically captured using a shared Confluence repository. Key modules like user onboarding, task assignment, and HR record viewing were described in terms of input/output formats, data models, error cases, and success conditions. This repository was continuously updated as new feedback emerged.
 
-Wrkin.app uses PostgreSQL as its primary relational database. During the internship, I worked with database schemas and queries, primarily through backend integration and testing. The schema was designed with normalized structures to maintain data integrity and minimize redundancy. Tables were created for users, teams, tasks, messages, HR records, and project metadata, with proper indexing for query optimization.
+\subsection{Non-Functional Requirements}
 
-I gained experience in managing many-to-many relationships, particularly between users and tasks, as well as projects and chat rooms. These relationships were critical in managing collaborative features like shared tasks, group messaging, and team performance tracking.
+Performance, security, scalability, and usability formed the backbone of non-functional requirements. For instance, real-time task updates needed to propagate across devices in under 300 milliseconds. Biometric login was mandated as a default security mechanism on mobile, and all HR data needed to be encrypted at rest and in transit.
 
-Django’s ORM (Object-Relational Mapping) system was used extensively to simplify query writing and enforce schema validation. I also worked with Django migrations to apply schema changes in a controlled and versioned manner. For data safety and recovery, daily backup mechanisms were configured with support for point-in-time recovery. These backups were stored securely in cloud repositories and regularly tested for reliability.
+\section{Requirement Analysis and Validation}
 
-\section{Development Environment and Tools}
+\subsection{Requirement Prioritization}
 
-The development workflow at Wrkin.app was structured, collaborative, and reflective of best industry practices. Version control was managed using Git, with a feature-branch strategy that enabled safe and parallel development. All changes were submitted as pull requests and underwent peer code reviews, which encouraged knowledge sharing and ensured high code quality.
+Using the MoSCoW framework (Must-have, Should-have, Could-have, Won’t-have), requirements were prioritized to balance development velocity and feature criticality. Early iterations focused on must-haves like real-time messaging and HR dashboard basics, while advanced analytics and workflow automation were scheduled for later sprints.
 
-The main IDEs I used were Android Studio and Visual Studio Code for Flutter development, while PyCharm was used occasionally for Python backend contributions. Postman was an essential tool for API testing, helping verify the correctness of backend endpoints before frontend integration. Database interactions were monitored and tested using pgAdmin.
+\subsection{Prototype-Based Validation}
 
-Our team adopted Agile development methodologies, with bi-weekly sprint cycles and daily stand-ups. Tasks were tracked using a collaborative issue management tool, which allowed for prioritization, bug tracking, and sprint planning. For UI/UX design and component specification, Figma was used to share mockups and coordinate implementation with the design team.
+Interactive Figma prototypes were used to validate high-priority features before development. These mockups allowed stakeholders to visualize user flows, provide feedback, and identify potential usability issues. This reduced redesign efforts during implementation.
 
-Testing was an integral part of the workflow. I wrote unit tests and integration tests for multiple Flutter modules, targeting at least 80\% code coverage. The continuous integration/continuous deployment (CI/CD) pipeline automatically built and tested the codebase, deploying to staging environments for review. This pipeline helped maintain development velocity while ensuring code stability and minimizing deployment risks.
+\subsection{Review Sessions and Feedback Loops}
 
-Overall, my responsibilities encompassed a wide spectrum of tasks—from frontend UI construction and backend API integration to testing and collaboration. This comprehensive exposure allowed me to grow as a full-stack developer and gain confidence in handling production-level projects in a professional setting.
+Sprint planning meetings and weekly reviews enabled continuous validation of evolving requirements. Peer reviews and QA tester feedback played a major role in refining requirements post-development, especially for complex modules like performance tracking and integrated notifications.
 
+\section{Requirement Management and Traceability}
+
+\subsection{Requirement Tracking Tools}
+
+Jira was used as the central platform for requirement tracking. User stories, bug reports, technical debts, and enhancement suggestions were logged and updated systematically. Dependencies were tracked using issue links, and the history feature helped trace evolving requirement contexts.
+
+\subsection{Traceability Matrix}
+
+A traceability matrix was constructed to map requirements to test cases, ensuring all scenarios were covered and that nothing fell through the cracks. This matrix also helped demonstrate compliance with data protection norms by mapping sensitive data handling requirements to specific encryption and access control implementations.
+
+\section{Case Study: Generative AI Integration Requirements}
+
+\subsection{Business Need Identification}
+
+One of the most transformative features under development was an AI-powered chatbot capable of responding to HR and task-related queries. The need arose from a desire to reduce admin workload and enhance user experience.
+
+\subsection{Requirement Specification Approach}
+
+Requirements were gathered through brainstorming sessions with the product team and AI engineers. Use cases included leave requests, task status queries, and HR policy lookups. These were documented with fallback logic, input validation rules, and NLP thresholds.
+
+\subsection{Validation and Refinement Process}
+
+Initial chatbot prototypes were tested against mock queries. Feedback revealed gaps in fallback responses and multilingual understanding, which led to an expansion of the training dataset and user intent categories.
+
+\section{Challenges and Lessons Learned}
+
+\subsection{Requirement Engineering Challenges}
+
+Maintaining consistent documentation during rapid iteration cycles was a significant challenge. Ambiguity in initial requirements occasionally led to rework. Balancing technical feasibility with business ambition required continuous negotiation.
+
+\subsection{Effective Practices Identified}
+
+Embedding requirement review checkpoints into sprint reviews proved effective in catching gaps early. Using visual wireframes also helped align understanding across technical and non-technical stakeholders.
+
+\subsection{Areas for Process Improvement}
+
+Automated tools for requirement version control and integrated user feedback analytics could further streamline the process. Future cycles could benefit from tighter integration between support tickets and requirement refinement.
+
+\section{Conclusion}
+
+Requirement engineering at wrkin.app was a living process—continuous, adaptive, and collaborative. From eliciting insights through interviews and competitor analysis to specifying detailed functional documents and validating them via prototypes, each step reinforced the importance of clarity and user-centricity. The lessons learned in this phase not only enhanced the product’s alignment with market needs but also provided deep insight into how agile requirement engineering works in real-world startup environments.
